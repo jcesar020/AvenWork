@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <f:metadata>
+        <f:viewParam name="photoId" value="#{commentBean.photoId}" />
+    </f:metadata>
+    <h:body>
+        MOSTRAR DETALLE DE FOTOGRAFIA
+        <br/>
+        <h:form>
+            <p:graphicImage value="#{photosBean.imagen}" width="350"  height="250">
+                <f:param name="imageId" value="#{commentBean.photoId}"/>
+            </p:graphicImage>
+            <h:panelGrid columns="2">
+                <h:outputText value="photoId"/>
+                <h:outputText value="#{commentBean.photoId}"/>
+
+                <h:outputText value="Titulo"/>
+                <h:outputText value="#{commentBean.photo.title}"/>
+
+                <h:outputText value="Descripcion"/>
+                <h:outputText value="#{commentBean.photo.descripcion}"/>
+
+                <h:outputText value="Fecha de creacion"/>
+                <h:outputText value="#{commentBean.photo.createdDate}"/>
+
+                <h:outputText value="Propietario"/>
+                <h:outputText value="#{commentBean.photo.user.user}"/>
+            </h:panelGrid>
+        </h:form>
+        <br/>
+
+        COMENTARIOS
+        <h:form >
+            <h:dataTable value="#{commentBean.comentarios}" var="c" border="1">
+                <h:column>
+                    <f:facet name="header">Usuario</f:facet>
+                    <h:outputText value="#{c.user.user}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Asunto</f:facet>
+                    <h:outputText value="#{c.subject}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Contenido</f:facet>
+                    <h:outputText value="#{c.body}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+        <br/><br/>
+
+        Agregar Comentario
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputText value="Tema"/>
+                <h:inputText value="#{commentBean.comentario.subject}"/>
+                <h:outputText value="Comentario"/>                
+                <h:inputTextarea value="#{commentBean.comentario.body}"/>
+                <h:commandButton value="Publicar" actionListener="#{commentBean.publicarComentario}"/>
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+

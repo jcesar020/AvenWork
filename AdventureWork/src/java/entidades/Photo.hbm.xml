@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-30-2016 01:02:38 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="aventurework" name="entidades.Photo" optimistic-lock="version" table="photo">
+    <id name="photoId" type="java.lang.Integer">
+      <column name="PhotoId"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="entidades.User" fetch="select" name="user">
+      <column length="15" name="Owner"/>
+    </many-to-one>
+    <property name="title" type="string">
+      <column name="Title" not-null="true"/>
+    </property>
+    <property name="photoFile" type="binary">
+      <column name="PhotoFile" not-null="false"/>
+    </property>
+    <property name="descripcion" type="string">
+      <column name="Descripcion" not-null="true"/>
+    </property>
+    <property name="createdDate" type="timestamp">
+      <column length="19" name="CreatedDate" not-null="false"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="comments" table="comment">
+      <key>
+        <column name="PhotoID" not-null="true"/>
+      </key>
+      <one-to-many class="entidades.Comment"/>
+    </set>
+  </class>
+</hibernate-mapping>

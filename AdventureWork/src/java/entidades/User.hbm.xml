@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-30-2016 01:02:38 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="aventurework" name="entidades.User" optimistic-lock="version" table="user">
+    <id name="user" type="string">
+      <column length="15" name="User"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="name" type="string">
+      <column name="name" not-null="true"/>
+    </property>
+    <property name="password" type="string">
+      <column length="25" name="password" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="photos" table="photo">
+      <key>
+        <column length="15" name="Owner"/>
+      </key>
+      <one-to-many class="entidades.Photo"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="comments" table="comment">
+      <key>
+        <column length="15" name="User" not-null="true"/>
+      </key>
+      <one-to-many class="entidades.Comment"/>
+    </set>
+  </class>
+</hibernate-mapping>
