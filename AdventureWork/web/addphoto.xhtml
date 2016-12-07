@@ -22,7 +22,7 @@
                 <p:fileUpload value="#{photosBean.file}" 
                               mode="simple" />
                 <h:outputText value=""/>
-                <h:commandButton value="enviar" actionListener="#{photosBean.guardar()}"/>
+                <h:commandButton value="enviar" action="#{photosBean.guardar()}"/>
             </h:panelGrid>                  
         <p:growl id="msg" showDetail="true" showSummary="true"/>
         </h:form>

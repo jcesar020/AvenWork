@@ -21,7 +21,7 @@ import org.primefaces.model.UploadedFile;
 
 public class PhotosBean {
 
-    private Photo photo;
+    private Photo photo=new Photo();
     private UploadedFile file;
     private InputStream photografy;
 
@@ -50,7 +50,7 @@ public class PhotosBean {
     }
 
     public PhotosBean() {
-        photo = new Photo();
+
     }
 
     public List<Photo> getPhotos() {
@@ -76,7 +76,7 @@ public class PhotosBean {
         }
     }
 
-    public void guardar() throws IOException {
+    public String guardar() throws IOException {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session ses = sf.openSession();
         Transaction tx = ses.beginTransaction();
@@ -98,5 +98,6 @@ public class PhotosBean {
         FacesContext.getCurrentInstance().addMessage(null, msg);
         photo.setTitle("");
         photo.setDescripcion("");
+        return "index";
     }
 }

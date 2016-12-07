@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controladores;
 
 import cl.utils.HibernateUtil;
@@ -28,6 +23,35 @@ import org.hibernate.Transaction;
 @RequestScoped
 public class CommentBean implements Serializable {
 
+    private User user;
+    private String usuario;
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getUsuario() {
+        if (FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario") != null) {
+            this.user = (User) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+            usuario = user.getUser();
+        }
+        return usuario;
+    }
+
+
+    public User getUser() {
+
+//        if (FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario") != null) {
+//
+//            if (this.user == null) {
+//                this.user = (User) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+//            }
+//        } else {
+//                this.user=new User();
+//        }
+        return user;
+    }
+
     private Comment comentario;
 
     public Comment getComentario() {
@@ -45,11 +69,11 @@ public class CommentBean implements Serializable {
 
         //Setea el usuario
         User user_sel;
-        user_sel = (User) ses.get(User.class, "jcesar");
-        
+        user_sel = (User) ses.get(User.class, user.getUser());
+
         //Setear la foto
         Photo photo_sel;
-        photo_sel=(Photo) ses.get(Photo.class, this.photoId);
+        photo_sel = (Photo) ses.get(Photo.class, this.photoId);
 
         Comment Com = new Comment(photo_sel, user_sel, comentario.getSubject(), comentario.getBody());
         ses.saveOrUpdate(Com);
@@ -108,7 +132,9 @@ public class CommentBean implements Serializable {
 
     public CommentBean() {
         photo = new Photo();
-        comentario=new Comment();
+        user = new User();
+        comentario = new Comment();
+
     }
 
     public void searchPhoto() {

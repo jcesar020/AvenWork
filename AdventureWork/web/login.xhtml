@@ -4,28 +4,24 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Creacion de usuarios</title>
+        <title>Login</title>
     </h:head>
     <h:body>
-        CREACION DE USUARIOS
+        AUTENTICACION DE USUARIO
         <h:form id="form1">
             <h:panelGrid columns="2">
                 <h:outputText value="Usuario"/>
                 <h:inputText value="#{userBean.user.user}"/>
 
-                <h:outputText value="Nombre"/>
-                <h:inputText value="#{userBean.user.name}"/>
-
                 <h:outputText value="Password"/>
                 <h:inputSecret value="#{userBean.user.password}"/>
 
                 <h:outputText value=""/>
-                <h:commandButton value="Guardar" action="#{userBean.guardar()}"/>
+                <h:commandButton value="Guardar" action="#{userBean.validar()}"/>
             </h:panelGrid>
-        <p:growl id="msg" showDetail="true" showSummary="true"/>
+            <p:growl id="msg" showDetail="true" showSummary="true"/>
 
-            </h:form>
-
+        </h:form>
     </h:body>
 </html>
 

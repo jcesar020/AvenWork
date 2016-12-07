@@ -8,12 +8,14 @@
         <title>Facelet Title</title>
     </h:head>
     <f:metadata>
-        <f:viewParam name="photoId" value="#{commentBean.photoId}" />
+        <f:viewParam name="photoId" value="#{commentBean}" />
     </f:metadata>
     <h:body>
         MOSTRAR DETALLE DE FOTOGRAFIA
         <br/>
         <h:form>
+            <h:outputText value="#{commentBean.usuario}"/>
+                    
             <p:graphicImage value="#{photosBean.imagen}" width="350"  height="250">
                 <f:param name="imageId" value="#{commentBean.photoId}"/>
             </p:graphicImage>
@@ -37,6 +39,8 @@
         <br/>
 
         COMENTARIOS
+        
+        
         <h:form >
             <h:dataTable value="#{commentBean.comentarios}" var="c" border="1">
                 <h:column>
@@ -55,15 +59,21 @@
         </h:form>
         <br/><br/>
 
+        
+        <h:form rendered="#{userBean.verificarSesion()}">
         Agregar Comentario
-        <h:form>
+        
+
             <h:panelGrid columns="2">
+                
                 <h:outputText value="Tema"/>
                 <h:inputText value="#{commentBean.comentario.subject}"/>
                 <h:outputText value="Comentario"/>                
                 <h:inputTextarea value="#{commentBean.comentario.body}"/>
                 <h:commandButton value="Publicar" actionListener="#{commentBean.publicarComentario}"/>
             </h:panelGrid>
+        
+        
         </h:form>
     </h:body>
 </html>
