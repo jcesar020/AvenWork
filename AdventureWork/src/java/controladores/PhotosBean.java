@@ -74,7 +74,7 @@ public class PhotosBean {
 
         PhotoDAO photoDAO = new PhotoDAO();
         List<Photo> lista;
-        lista = photoDAO.listar(2,5);
+        lista = photoDAO.listar(1,5);
         return lista;
     }
 
