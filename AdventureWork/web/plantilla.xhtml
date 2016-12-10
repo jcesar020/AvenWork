@@ -31,17 +31,20 @@
                             <div class="cart-info">
 
 
-                                <h:panelGroup >
+                                <h:panelGroup rendered="#{!userBean.verificarSesion()}">
                                     <i class="fa fa-user"></i>
                                     <h:link value="iniciar sesion" outcome="login"  />
                                 </h:panelGroup>     
-
-                                <div rendered="#{userBean.verificarSesion()}" >
+                                <h:panelGroup rendered="#{userBean.verificarSesion()}">
                                     <h:form>
+                                        <span><h:outputText value="#{userBean.user.user}"/></span>
                                         <h:commandLink value="Cerrar sesion" action="#{userBean.cerrarSesion()}" rendered="#{userBean.verificarSesion()}"/>
-                                    </h:form>
+                                    </h:form> 
+                                </h:panelGroup>
+                                
+                                   
 
-                                </div>
+                               
 
                             </div>
                         </div>

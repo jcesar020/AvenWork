@@ -92,6 +92,7 @@ public class UserBean implements Serializable {
 
     public String cerrarSesion() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        user.setUser("");
         return "index?faces-redirect=true";
     }
     

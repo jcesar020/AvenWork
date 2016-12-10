@@ -63,7 +63,7 @@
                                                         <h:outputText value="#{photosBean.photo.descripcion}"/>
 
                                                         <div class="divide-line">
-                                                            <img src="images/div-line.png" alt="" />
+                                                            <img src="resources/images/div-line.png" alt="" />
                                                         </div>
                                                         <div class="comments-title">
                                                             <div class="comment-section">
@@ -90,7 +90,8 @@
                                                             <div class="divide-line">
                                                                 <img src="resources/images/div-line.png" alt="" />
                                                             </div>
-                                                            <div rendered="#{userBean.verificarSesion()}">
+                                                            <h:panelGroup rendered="#{userBean.verificarSesion()}">
+
                                                                 <div class="leave-comment">
                                                                     <div class="leave-one">
                                                                         <h4>Agrega un comentario</h4>
@@ -106,7 +107,7 @@
                                                                     </h:form> 
 
                                                                 </div>
-                                                            </div>
+                                                            </h:panelGroup>
                                                         </div>
 
                                                     </div>
