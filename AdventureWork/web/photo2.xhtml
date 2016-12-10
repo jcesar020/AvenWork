@@ -7,42 +7,43 @@
     <h:head>
         <title>Facelet Title</title>
     </h:head>
-    <f:metadata>
-        <f:viewParam name="photoId" value="#{commentBean}" />
-    </f:metadata>
     <h:body>
-        MOSTRAR DETALLE DE FOTOGRAFIA
+        OPCION 2 <br/>
+        MOSTRAR LA FOTOGRAFIA EN DETALLE
+
         <br/>
         <h:form>
-            <h:outputText value="#{commentBean.usuario}"/>
-                    
+
+            FOTOGRAFIA
             <p:graphicImage value="#{photosBean.imagen}" width="350"  height="250">
-                <f:param name="imageId" value="#{commentBean.photoId}"/>
+                <f:param name="imageId" value="#{photosBean.photo.photoId}"/>
             </p:graphicImage>
             <h:panelGrid columns="2">
                 <h:outputText value="photoId"/>
-                <h:outputText value="#{commentBean.photoId}"/>
+                <h:outputText value="#{photosBean.photo.photoId}"/>
 
                 <h:outputText value="Titulo"/>
-                <h:outputText value="#{commentBean.photo.title}"/>
+                <h:outputText value="#{photosBean.photo.title}"/>
 
                 <h:outputText value="Descripcion"/>
-                <h:outputText value="#{commentBean.photo.descripcion}"/>
+                <h:outputText value="#{photosBean.photo.descripcion}"/>
 
                 <h:outputText value="Fecha de creacion"/>
-                <h:outputText value="#{commentBean.photo.createdDate}"/>
+                <h:outputText value="#{photosBean.photo.createdDate}">
+                    <f:convertDateTime pattern="dd-MM-yyyy"/>
+                </h:outputText>
 
                 <h:outputText value="Propietario"/>
-                <h:outputText value="#{commentBean.photo.user.user}"/>
+                <h:outputText value="#{photosBean.photo.user.user}"/>
             </h:panelGrid>
+
+            <h:commandLink value="Eliminar" action="#{photosBean.eliminar}" rendered="#{userBean.verificarSesion()}"/>
         </h:form>
         <br/>
 
         COMENTARIOS
-        
-        
         <h:form >
-            <h:dataTable value="#{commentBean.comentarios}" var="c" border="1">
+            <h:dataTable value="#{photosBean.photo.comments}" var="c" border="1">
                 <h:column>
                     <f:facet name="header">Usuario</f:facet>
                     <h:outputText value="#{c.user.user}"/>
@@ -59,21 +60,19 @@
         </h:form>
         <br/><br/>
 
-        
         <h:form rendered="#{userBean.verificarSesion()}">
-        Agregar Comentario
-        
-
+            Agregar Comentario
             <h:panelGrid columns="2">
-                
                 <h:outputText value="Tema"/>
-                <h:inputText value="#{commentBean.comentario.subject}"/>
+
+                <h:inputText value="#{photosBean.comentario.subject}"/>
                 <h:outputText value="Comentario"/>                
-                <h:inputTextarea value="#{commentBean.comentario.body}"/>
-                <h:commandButton value="Publicar" actionListener="#{commentBean.publicarComentario}"/>
+                <h:inputTextarea value="#{photosBean.comentario.body}"/>
+                <div class="send">
+                    <h:commandButton value="Publicar" styleClass="btn btn-primary " actionListener="#{photosBean.publicarComentario()}" />
+                </div>
             </h:panelGrid>
-        
-        
+
         </h:form>
     </h:body>
 </html>

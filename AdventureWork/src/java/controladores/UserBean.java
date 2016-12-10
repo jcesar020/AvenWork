@@ -57,7 +57,7 @@ public class UserBean implements Serializable {
         user.setName("");
         user.setPassword("");
 
-        return "index";
+        return "galery";
     }
 
     public String validar() throws Exception {
@@ -70,7 +70,7 @@ public class UserBean implements Serializable {
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", us);
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Login", "Bienvenido");
                 FacesContext.getCurrentInstance().addMessage(null, msg);
-                resultado = "index";
+                resultado = "gallery";
             } else {
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Datos erroneos");
                 FacesContext.getCurrentInstance().addMessage(null, msg);

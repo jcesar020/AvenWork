@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'/>
+        <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/templatemo_misc.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/templatemo_style.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/flexslider.css" rel="stylesheet" type="text/css"/>
+        <script src="resources/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js" type="text/javascript"></script>
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+        <header>
+            <div id="top-header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="home-account">
+                                <h:link value="Inicio" outcome="index"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="cart-info">
+
+
+                                <h:panelGroup >
+                                    <i class="fa fa-user"></i>
+                                    <h:link value="iniciar sesion" outcome="login"  />
+                                </h:panelGroup>     
+
+                                <div rendered="#{userBean.verificarSesion()}" >
+                                    <h:form>
+                                        <h:commandLink value="Cerrar sesion" action="#{userBean.cerrarSesion()}"/>
+                                    </h:form>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="main-header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="logo">
+                                <h:link outcome="index"><img src="resources/images/logo.png" title="Grill Template" alt="Grill Website Template" /></h:link>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="main-menu">
+                                <ul>
+                                    <li><h:link value="Inicio" outcome="index"/></li>
+                                    <li><h:link value="Galeria" outcome="gallery"/></li>
+                                    <li><h:link value="Agregar Foto" outcome="addphoto"/></li>
+                                    <li><h:link value="Presentacion" outcome="index"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div id="top">
+            <ui:insert name="top">             
+            </ui:insert>
+        </div>
+
+
+        <div id="content" class="center_content">
+            <ui:insert name="content"></ui:insert>
+        </div>
+
+        <div id="bottom">
+            <footer>
+                <div class="container">
+                    <div class="top-footer">
+                        <div class="row">
+                            <div class="col-md-9">
+
+                            </div>
+                            <div class="col-md-3">
+                                <div class="social-bottom">
+                                    <span>Siguenos:</span>
+                                    <ul>
+                                        <li><a href="#" class="fa fa-facebook"></a></li>
+                                        <li><a href="#" class="fa fa-twitter"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="main-footer">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="about">
+                                    <h4 class="footer-title">Acerca de AdventureWork</h4>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="more-info">
+                                    <h4 class="footer-title">Mas Informacion</h4>
+                                    <p>Sed dignissim, diam id molestie faucibus, purus nisl pretium quam, in pulvinar velit massa id elit.</p>
+                                    <ul>
+                                        <li><i class="fa fa-phone"></i>010-020-0340</li>
+                                        <li><i class="fa fa-globe"></i>123 Dagon Studio, Yakin Street, Digital Estate</li>
+                                        <li><i class="fa fa-envelope"></i><a href="#">info@company.com</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script src="resources/js/vendor/jquery-1.11.0.min.js" type="text/javascript"></script>
+                <script src="resources/js/vendor/jquery.gmap3.min.js" type="text/javascript"></script>
+
+                <script src="resources/js/plugins.js" type="text/javascript"></script>
+                <script src="resources/js/main.js" type="text/javascript"></script>
+
+            </footer>
+            <ui:insert name="bottom"></ui:insert>
+        </div>
+
+
+
+    </h:body>
+
+</html>

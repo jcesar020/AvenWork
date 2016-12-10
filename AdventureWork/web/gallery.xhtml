@@ -8,19 +8,16 @@
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <ui:define name="top">
-        <div id="slider">
-            <div class="flexslider">
-                <ul class="slides">
-                    <li>
-                        <div class="slider-caption">
-                            <h1>Chivo va vos</h1>
-                            <p>Un paisaje muy bonito</p>
-                            <a href="single-post.html">Mas Detalles</a>
+        <div id="heading">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="heading-content">
+                            <h2>Mi coleccion</h2>
+                            <span>Inicio / <a href="single-post.html">Detalle</a></span>
                         </div>
-                        <img src="resources/images/foto_99.jpg" alt="" />
-                    </li>
-
-                </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </ui:define>
@@ -29,7 +26,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="heading-section">
-                        <h2>Ultimas publicaciones</h2>
+                        <h2>Tus fotografias</h2>
                         <img src="resources/images/under-heading.png" alt=""/> 
                     </div>
                 </div>
@@ -38,7 +35,7 @@
 
             <h:form>
 
-                <c:forEach items="#{photosBean.lastPhotos}" var="p">
+                <c:forEach items="#{photosBean.photos}" var="p">
                     <div class="col-md-4 col-sm-6">
                         <div class="blog-post">
                             <div class="blog-thumb">
@@ -66,23 +63,6 @@
                 </c:forEach>
 
             </h:form>
-
-            <div class="pagination">
-                <div class="row">   
-                    <div class="col-md-12">
-                        <ul>
-                            <h:form>
-                                <li><a href="#">Primera</a></li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">Ultima</a></li>
-                            </h:form>
-                        </ul>
-                    </div>
-                </div>
-            </div> 
         </div>  
 
     </ui:define>

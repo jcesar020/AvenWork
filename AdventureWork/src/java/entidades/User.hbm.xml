@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 11-30-2016 01:02:38 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="aventurework" name="entidades.User" optimistic-lock="version" table="user">
+  <class catalog="adventure_work" name="entidades.User" optimistic-lock="version" table="user">
     <id name="user" type="string">
       <column length="15" name="User"/>
       <generator class="assigned"/>

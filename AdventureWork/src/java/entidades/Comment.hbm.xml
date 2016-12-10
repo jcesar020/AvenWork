@@ -2,22 +2,25 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 11-30-2016 01:02:38 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="aventurework" name="entidades.Comment" optimistic-lock="version" table="comment">
-    <id name="commentId" type="java.lang.Integer">
-      <column name="CommentID"/>
-      <generator class="identity"/>
-    </id>
-    <many-to-one class="entidades.Photo" fetch="select" name="photo">
-      <column name="PhotoID" not-null="true"/>
-    </many-to-one>
-    <many-to-one class="entidades.User" fetch="select" name="user">
-      <column length="15" name="User" not-null="true"/>
-    </many-to-one>
-    <property name="subject" type="string">
-      <column name="Subject" not-null="true"/>
-    </property>
-    <property name="body" type="string">
-      <column name="Body" not-null="true"/>
-    </property>
-  </class>
+    <class catalog="adventure_work" name="entidades.Comment" optimistic-lock="version" table="comment">
+        <id name="commentId" type="java.lang.Integer">
+            <column name="CommentID"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="entidades.Photo" fetch="select" name="photo">
+            <column name="PhotoID" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="entidades.User" fetch="select" name="user">
+            <column length="15" name="User" not-null="true"/>
+        </many-to-one>
+        <property name="subject" type="string">
+            <column name="Subject" not-null="true"/>
+        </property>
+        <property name="body" type="string">
+            <column name="Body" not-null="true"/>
+        </property>
+        <property name="createdDate" type="timestamp">
+            <column length="19" name="CreatedDate" not-null="false"/>
+        </property>
+    </class>
 </hibernate-mapping>

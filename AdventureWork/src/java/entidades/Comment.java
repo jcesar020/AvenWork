@@ -1,6 +1,9 @@
 package entidades;
 // Generated 11-30-2016 01:02:38 AM by Hibernate Tools 4.3.1
 
+import java.util.Date;
+
+
 
 
 /**
@@ -14,15 +17,20 @@ public class Comment  implements java.io.Serializable {
      private User user;
      private String subject;
      private String body;
+     private Date createdDate;
+
+
 
     public Comment() {
     }
 
+    
     public Comment(Photo photo, User user, String subject, String body) {
        this.photo = photo;
        this.user = user;
        this.subject = subject;
        this.body = body;
+       this.createdDate= new Date();
     }
    
     public Integer getCommentId() {
@@ -61,7 +69,14 @@ public class Comment  implements java.io.Serializable {
         this.body = body;
     }
 
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
 
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+     
 
 
 }
