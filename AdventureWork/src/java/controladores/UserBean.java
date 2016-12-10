@@ -57,7 +57,7 @@ public class UserBean implements Serializable {
         user.setName("");
         user.setPassword("");
 
-        return "galery";
+        return "login?faces-redirect=true";
     }
 
     public String validar() throws Exception {

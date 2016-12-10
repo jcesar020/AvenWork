@@ -38,7 +38,7 @@
 
                                 <div rendered="#{userBean.verificarSesion()}" >
                                     <h:form>
-                                        <h:commandLink value="Cerrar sesion" action="#{userBean.cerrarSesion()}"/>
+                                        <h:commandLink value="Cerrar sesion" action="#{userBean.cerrarSesion()}" rendered="#{userBean.verificarSesion()}"/>
                                     </h:form>
 
                                 </div>
@@ -61,7 +61,7 @@
                                 <ul>
                                     <li><h:link value="Inicio" outcome="index"/></li>
                                     <li><h:link value="Galeria" outcome="gallery"/></li>
-                                    <li><h:link value="Agregar Foto" outcome="addphoto"/></li>
+                                    <li><h:link value="Agregar Foto" outcome="addphoto"  rendered="#{userBean.verificarSesion()}"/></li>
                                     <li><h:link value="Presentacion" outcome="index"/></li>
                                 </ul>
                             </div>

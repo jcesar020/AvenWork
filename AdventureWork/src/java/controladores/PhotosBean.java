@@ -112,7 +112,7 @@ public class PhotosBean {
         FacesContext.getCurrentInstance().addMessage(null, msg);
         photo.setTitle("");
         photo.setDescripcion("");
-        return "galery";
+        return "gallery?faces-redirect=true";
     }
 
     ///////////////////MOFIFICACIONES////////////////////
