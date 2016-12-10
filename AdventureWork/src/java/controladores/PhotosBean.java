@@ -68,13 +68,9 @@ public class PhotosBean {
 
     public List<Photo> getLastPhotos() throws Exception {
         User user_sel = new User();
-//        if (FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario") != null) {
-//            user_sel = (User) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
-//        }
-
         PhotoDAO photoDAO = new PhotoDAO();
         List<Photo> lista;
-        lista = photoDAO.listar(1,6);  //Es codigo esta proceso para la paginacion, muestra 6 fotos desde la 1
+        lista = photoDAO.listar(1, 6);  //Es codigo esta proceso para la paginacion, muestra 6 fotos desde la 1
         return lista;
     }
 
@@ -112,7 +108,7 @@ public class PhotosBean {
         FacesContext.getCurrentInstance().addMessage(null, msg);
         photo.setTitle("");
         photo.setDescripcion("");
-        return "galery";
+        return "gallery";
     }
 
     ///////////////////MOFIFICACIONES////////////////////
