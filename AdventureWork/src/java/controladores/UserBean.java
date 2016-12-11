@@ -13,7 +13,6 @@ import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import modelos.userDAO;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -70,7 +69,7 @@ public class UserBean implements Serializable {
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", us);
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Login", "Bienvenido");
                 FacesContext.getCurrentInstance().addMessage(null, msg);
-                resultado = "gallery";
+                resultado = "myphotos";
             } else {
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Datos erroneos");
                 FacesContext.getCurrentInstance().addMessage(null, msg);

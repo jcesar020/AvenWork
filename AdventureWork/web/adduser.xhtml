@@ -1,31 +1,50 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <title>Creacion de usuarios</title>
-    </h:head>
-    <h:body>
-        CREACION DE USUARIOS
-        <h:form id="form1">
-            <h:panelGrid columns="2">
-                <h:outputText value="Usuario"/>
-                <h:inputText value="#{userBean.user.user}"/>
 
-                <h:outputText value="Nombre"/>
-                <h:inputText value="#{userBean.user.name}"/>
+    <body>
 
-                <h:outputText value="Password"/>
-                <h:inputSecret value="#{userBean.user.password}"/>
+        <ui:composition template="./plantilla.xhtml">
 
-                <h:outputText value=""/>
-                <h:commandButton value="Guardar" action="#{userBean.guardar()}"/>
-            </h:panelGrid>
-        <p:growl id="msg" showDetail="true" showSummary="true"/>
+            <ui:define name="top">
+                top
+            </ui:define>
 
-            </h:form>
+            <ui:define name="content">
+                <div class="container">
+                    <div class="col-lg-8 col-lg-offset-2">  
+                        <h3>CREACION DE USUARIOS</h3>
+                        <h:form id="form1">
+                            <h:panelGrid columns="2" width="80%">
+                                <h:outputText value="Usuario"/>
+                                <h:inputText value="#{userBean.user.user}" required="true" requiredMessage="Campo Usuario requerido"/>
 
-    </h:body>
+                                <h:outputText value="Nombre"/>
+                                <h:inputText value="#{userBean.user.name}" required="true" requiredMessage="Campo nombre requerido"/>
+
+                                <h:outputText value="Password"/>
+                                <h:inputSecret value="#{userBean.user.password}" required="true" requiredMessage="Campo password requerido"/>
+
+                                <h:outputText value=""/>
+                                <div class="send">
+                                    <h:commandButton styleClass="btn btn-primary" value="Crear" action="#{userBean.guardar()}"/>
+                            </div>
+                            </h:panelGrid>
+                            <p:growl id="msg" showDetail="true" showSummary="true"/>
+
+                        </h:form>
+                    </div>
+                </div>
+            </ui:define>
+
+            <ui:define name="bottom">
+                bottom
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
 </html>
-

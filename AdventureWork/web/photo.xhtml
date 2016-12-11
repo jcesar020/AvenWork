@@ -9,9 +9,7 @@
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
     <body>
-
         <ui:composition template="./plantilla.xhtml">
-
             <ui:define name="top">
                 <div id="heading">
                     <div class="container">
@@ -19,16 +17,13 @@
                             <div class="col-md-12">
                                 <div class="heading-content">
                                     <h2>Detalle de Fotografia</h2>
-                                    <span><a href="index.xhtml">Inicio</a> / <a href="gallery.xhtml">Galeria</a></span>
+                                    <span><a href="index.xhtml">Inicio</a> / <a href="myphotos.xhtml">Galeria</a></span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
             </ui:define>
-
             <ui:define name="content">
                 <div id="product-post">
                     <div class="container">
@@ -37,7 +32,6 @@
                                 <div class="heading-section">
                                     <h2>Detalle de la fotografia</h2>
                                     <img src="resources/images/under-heading.png" alt="" />
-
                                 </div>
                             </div>
                         </div>
@@ -60,8 +54,23 @@
                                                             <h3><h:outputText value="#{photosBean.photo.title}"/> </h3>
                                                             <span class="subtitle"><h:outputText value="#{photosBean.photo.user.name}" /></span>
                                                         </div>
-                                                        <h:outputText value="#{photosBean.photo.descripcion}"/>
-
+                                                        <h:outputText value="#{photosBean.photo.descripcion}"/><br/>
+                                                        <h:panelGroup rendered="#{photosBean.propietario}">
+                                                            <h:form>           
+                                                                <h:commandLink styleClass="btn btn-primary" value="Modificar" action="#{photosBean.modificar()}"/>
+                                                                <h:commandLink value="Eliminar" 
+                                                                               styleClass="btn btn-danger"
+                                                                               onclick="if (!confirm('Seguro de eliminar la fotografia?')) {
+                                                                                           return false;
+                                                                                       }
+                                                                                       ;
+                                                                                       return true;
+                                                                               " 
+                                                                               action="#{photosBean.eliminar()}"
+                                                                               />
+                                                                
+                                                            </h:form>
+                                                        </h:panelGroup>
                                                         <div class="divide-line">
                                                             <img src="resources/images/div-line.png" alt="" />
                                                         </div>
@@ -127,6 +136,8 @@
                         </div>
                     </div>
                 </div>
+
+
             </ui:define>
 
             <ui:define name="bottom">

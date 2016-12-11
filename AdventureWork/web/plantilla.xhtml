@@ -54,14 +54,19 @@
                                 <h:link outcome="index"><img src="resources/images/logo.png" title="Grill Template" alt="Grill Website Template" /></h:link>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-9">
                             <div class="main-menu">
-                                <ul>
-                                    <li><h:link value="Inicio" outcome="index"/></li>
-                                    <li><h:link value="Galeria" outcome="gallery"/></li>
-                                    <li><h:link value="Agregar Foto" outcome="addphoto"  rendered="#{userBean.verificarSesion()}"/></li>
-                                    <li><h:link value="Presentacion" outcome="index"/></li>
-                                </ul>
+
+                                <h:form>
+                                    <ul>         
+                                        <li><h:link value="Inicio" outcome="index"/></li>
+                                        <li><h:link value="Galeria" outcome="gallery"/></li>
+                                        <li><h:commandLink value="Mis fotos" action="myphotos" rendered="#{userBean.verificarSesion()}" /></li>
+                                        <li><h:commandLink value="Agregar Foto" action="#{photosBean.nueva()}"  rendered="#{userBean.verificarSesion()}"/></li>
+                                        <li><h:link value="Presentacion" outcome="presentacion"/></li>
+                                    </ul>
+                                </h:form>
+
                             </div>
                         </div>
                     </div>

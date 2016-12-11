@@ -8,19 +8,16 @@
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <ui:define name="top">
-        <div id="slider">
-            <div class="flexslider">
-                <ul class="slides">
-                    <li>
-                        <div class="slider-caption">
-                            <h1>Chivo va vos</h1>
-                            <p>Un paisaje muy bonito</p>
-                            <a href="single-post.html">Mas Detalles</a>
+        <div id="heading">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="heading-content">
+                            <h2>Ultimas fotografias compartidas</h2>
+<!--                            <span><a href="index.xhtml">Inicio</a> / Detalle</span>-->
                         </div>
-                        <img src="resources/images/foto_99.jpg" alt="" />
-                    </li>
-
-                </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </ui:define>
@@ -53,6 +50,9 @@
                                         <h:outputText value="#{p.createdDate}">
                                             <f:convertDateTime pattern="dd-MM-yyyy"/>
                                         </h:outputText>
+                                        |
+                                        <h:outputText value="#{p.user.user}"/>
+
                                     </span>
                                 </div>
                                 <div class="content-hide">
@@ -66,24 +66,26 @@
                 </c:forEach>
 
             </h:form>
-            <div class="row">
+<!--            <div class="row">
                 <div class="pagination">
                     <div class="row">   
                         <div class="col-md-12">
                             <ul>
                                 <h:form>
-                                    <li><a href="#">Primera</a></li>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">Ultima</a></li>
+
+                                    <li><h:commandLink value="Primera" action="#{photosBean.setPage(1)}"/></li>
+                                    <c:forEach begin="1" end="#{photosBean.pages}" var="i">
+                                        <li><h:commandLink value="#{i}" action="#{photosBean.setPage(i)}"/></li>
+                                    </c:forEach>
+                                    <li><h:commandLink value="Ultima" action="#{photosBean.setPage(-1)}"/></li>
+
                                 </h:form>
                             </ul>
                         </div>
                     </div>
                 </div> 
-            </div>  
+            </div>  -->
         </div>
     </ui:define>
+
 </ui:composition>

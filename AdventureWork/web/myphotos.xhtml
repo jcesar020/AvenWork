@@ -13,8 +13,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="heading-content">
-                            <h2>Todas las fotografias</h2>
-<!--                            <span><a href="index.xhtml">Inicio</a> / Detalle</span>-->
+                            <h2>Mis Fotografias</h2>
+                            <span><a href="index.xhtml">Inicio</a> / Detalle</span>
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="heading-section">
-                        <h2>Ultimas publicaciones</h2>
+                        <h2>Tus fotografias</h2>
                         <img src="resources/images/under-heading.png" alt=""/> 
                     </div>
                 </div>
@@ -35,7 +35,7 @@
 
             <h:form>
 
-                <c:forEach items="#{photosBean.lastPhotos}" var="p">
+                <c:forEach items="#{photosBean.photos}" var="p">
                     <div class="col-md-4 col-sm-6">
                         <div class="blog-post">
                             <div class="blog-thumb">
@@ -52,7 +52,6 @@
                                         </h:outputText>
                                         |
                                         <h:outputText value="#{p.user.user}"/>
-
                                     </span>
                                 </div>
                                 <div class="content-hide">
@@ -66,26 +65,7 @@
                 </c:forEach>
 
             </h:form>
-            <div class="row">
-                <div class="pagination">
-                    <div class="row">   
-                        <div class="col-md-12">
-                            <ul>
-                                <h:form>
+        </div>  
 
-                                    <li><h:commandLink value="Primera" action="#{photosBean.setPage(1)}"/></li>
-                                    <c:forEach begin="1" end="#{photosBean.pages}" var="i">
-                                        <li><h:commandLink value="#{i}" action="#{photosBean.setPage(i)}"/></li>
-                                    </c:forEach>
-                                    <li><h:commandLink value="Ultima" action="#{photosBean.setPage(-1)}"/></li>
-
-                                </h:form>
-                            </ul>
-                        </div>
-                    </div>
-                </div> 
-            </div>  
-        </div>
     </ui:define>
-
 </ui:composition>

@@ -6,29 +6,34 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
                 xmlns:h="http://xmlns.jcp.org/jsf/html">
-        
+
     <ui:define name="content">
         <div class="container">
-            
-        <h:form enctype="multipart/form-data" id="form1">
-            <h3>ADICIONAR UNA FOTOGRAFIA</h3>
-                <h:panelGrid columns="2">
-                    <h:outputText value="Titulo"/>
-                    <h:inputText value="#{photosBean.photo.title}" />
+            <div class="col-sm-8 col-sm-offset-2">  
+                <h:form enctype="multipart/form-data" id="form1">
+                    <h3>ADICIONAR UNA FOTOGRAFIA</h3>
+                    <h:panelGrid columns="2" width="80%">
+                        <h:outputLabel value="Titulo"/>
+                        <h:inputText value="#{photosBean.photo.title}" required="true" requiredMessage="No ha ingresado un titulo"/>
+                        
+                        <h:outputLabel value="Descripcion"/>
+                        <h:inputTextarea value="#{photosBean.photo.descripcion}" required="true" requiredMessage="Requiere descripcion" />
 
-                    <h:outputText value="Descripcion"/>
-                    <h:inputTextarea value="#{photosBean.photo.descripcion}"  />
+                        <h:outputLabel value="Foto"/>
 
-                    <h:outputText value="Foto"/>
-
-                    <p:fileUpload value="#{photosBean.file}" 
-                                  mode="simple" />
-                    <h:outputText value=""/>
-                    <h:commandButton value="enviar" action="#{photosBean.guardar()}"/>
-                </h:panelGrid>                  
-            <p:growl id="msg" showDetail="true" showSummary="true"/>
-        </h:form>
+                        <p:fileUpload value="#{photosBean.file}" 
+                                      mode="simple"
+                                      required="true" 
+                                      requiredMessage="Debe seleccionar una fotografia"/>
+                        <h:outputText value=""/>
+                        <div class="send">
+                            <h:commandButton styleClass="btn btn-primary" value="Guardar" action="#{photosBean.guardar()}"/>
+                        </div>
+                    </h:panelGrid>                  
+                    <p:growl id="msg" showDetail="true" showSummary="true"/>
+                </h:form>
+            </div>
         </div>
     </ui:define>
-    
+
 </ui:composition>

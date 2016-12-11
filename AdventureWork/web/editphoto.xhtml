@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+    <body>
+
+
+        <ui:composition template="./plantilla.xhtml">
+
+            <ui:define name="top">
+                <div id="heading">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="heading-content">
+                                    <h2>Detalle de Fotografia</h2>
+                                    <span><a href="index.xhtml">Inicio</a> / <a href="myphotos.xhtml">Galeria</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </ui:define>
+
+            <ui:define name="content">
+
+
+                <div id="product-post">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="heading-section">
+                                    <h2>Detalle de la fotografia</h2>
+                                    <img src="resources/images/under-heading.png" alt="" />
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="single-blog" class="page-section first-section">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="product-item col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-8 col-md-offset-2">
+                                                <div class="image">
+                                                    <div class="image-post">
+
+                                                        <p:graphicImage value="#{photosBean.imagen}" style="max-width: 100%; height: auto" >
+                                                            <f:param name="imageId" value="#{photosBean.photo.photoId}"/>
+                                                        </p:graphicImage>
+                                                    </div>
+
+                                                    <div class="product-content">
+                                                        <h:form>     
+                                                            <h:panelGrid columns="2">
+                                                                <h:outputLabel value="Titulo"/>
+                                                                <h:inputText value="#{photosBean.photo.title}"/>
+                                                                <h:outputLabel value="Descripcion"/>
+                                                                <h:inputTextarea value="#{photosBean.photo.descripcion}"/><br/>
+                                                                <h:outputLabel value=""/>
+                                                                <h:commandLink styleClass="bnt btn-primary" value="Actualizar" action="#{photosBean.actualizar}"/>
+                                                       </h:panelGrid>
+  </h:form>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>  
+
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </ui:define>
+
+            <ui:define name="bottom">
+                bottom
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

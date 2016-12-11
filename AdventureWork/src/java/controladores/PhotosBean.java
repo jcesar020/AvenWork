@@ -25,6 +25,36 @@ public class PhotosBean {
     private Photo photo = new Photo();
     private UploadedFile file;
     private Comment comentario = new Comment();
+    private int pages;
+    private int page;
+    private boolean propietario;
+
+    public boolean isPropietario() {
+        //Verifica propiedad de fotografia para poder eliminar o modificar
+        propietario = false;
+        if (FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario") != null) {
+            User user_sel = (User) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+            if (user_sel.getUser().equals(photo.getUser().getUser())) {
+                propietario = true;
+            }
+        }
+        return propietario;
+    }
+
+    public void setPages(int pages) {
+        this.pages = pages;
+    }
+
+    public int getPages() {
+        return pages;
+    }
+
+    public void setPage(int page) {
+        if (page == -1) {
+            page = pages;
+        }
+        this.page = page;
+    }
 
     public Comment getComentario() {
         return comentario;
@@ -61,6 +91,7 @@ public class PhotosBean {
         }
 
         PhotoDAO photoDAO = new PhotoDAO();
+
         List<Photo> lista;
         lista = photoDAO.listar(user_sel.getUser());
         return lista;
@@ -68,13 +99,11 @@ public class PhotosBean {
 
     public List<Photo> getLastPhotos() throws Exception {
         User user_sel = new User();
-//        if (FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario") != null) {
-//            user_sel = (User) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
-//        }
 
         PhotoDAO photoDAO = new PhotoDAO();
+        pages = photoDAO.getPages();
         List<Photo> lista;
-        lista = photoDAO.listar(0,5);
+        lista = photoDAO.listar(page);
         return lista;
     }
 
@@ -92,12 +121,21 @@ public class PhotosBean {
         }
     }
 
+    public String actualizar() throws Exception {
+        PhotoDAO photoDAO = new PhotoDAO();
+        photoDAO.actualizar(this.photo);
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Fotografia Actualizada");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        return "photo";
+
+    }
+
     public String guardar() throws IOException, Exception {
         User user_sel = (User) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
         PhotoDAO photoDAO = new PhotoDAO();
-        SessionFactory sf = HibernateUtil.getSessionFactory();
-        Session ses = sf.openSession();
-        Transaction tx = ses.beginTransaction();
+//        SessionFactory sf = HibernateUtil.getSessionFactory();
+//        Session ses = sf.openSession();
+//        Transaction tx = ses.beginTransaction();
 
         //Agregar la imagen
         if (file != null) {
@@ -112,7 +150,7 @@ public class PhotosBean {
         FacesContext.getCurrentInstance().addMessage(null, msg);
         photo.setTitle("");
         photo.setDescripcion("");
-        return "gallery?faces-redirect=true";
+        return "myphotos?faces-redirect=true";
     }
 
     ///////////////////MOFIFICACIONES////////////////////
@@ -121,12 +159,23 @@ public class PhotosBean {
         return "photo";
     }
 
+    public String modificar() {
+
+        return "editphoto";
+    }
+
     public String eliminar() throws Exception {
         PhotoDAO photoDAO = new PhotoDAO();
-        photoDAO.eliminar(this.photo);
+        photoDAO.eliminar(this.photo.getPhotoId());
+        this.photo = new Photo();
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "ELIMINACION", "Fotografia Eliminada");
         FacesContext.getCurrentInstance().addMessage(null, msg);
-        return "galery";
+        return "gallery";
+    }
+
+    public String nueva() {
+        photo = new Photo();
+        return "addphoto?faces-redirect=true";
     }
 
     public void publicarComentario() {
